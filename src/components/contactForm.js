@@ -1,6 +1,14 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
 
+import TextField from '@material-ui/core/TextField';import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 
 export default function ContactUs() {
 
@@ -23,28 +31,63 @@ export default function ContactUs() {
     }
 
     return(
-        <div>
-            <div className="container">
-            <form onSubmit={sendEmail}>
-                    <div className="row pt-5 mx-auto">
-                        <div className="col-8 form-group mx-auto">
-                            <input type="text" className="form-control" placeholder="Name" name="name"/>
-                        </div>
-                        <div className="col-8 form-group pt-2 mx-auto">
-                            <input type="email" className="form-control" placeholder="Email Address" name="email"/>
-                        </div>
-                        <div className="col-8 form-group pt-2 mx-auto">
-                            <input type="text" className="form-control" placeholder="Subject" name="subject"/>
-                        </div>
-                        <div className="col-8 form-group pt-2 mx-auto">
-                            <textarea className="form-control" id="" placeholder="Your message" name="message"></textarea>
-                        </div>
-                        <div className="col-8 pt-3 mx-auto">
-                            <input type="submit" className="btn btn-info" value="Send Message"></input>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        
+        <Grid container 
+            direction="row"
+            justify="center"
+            alignItems="stretch">
+            <Grid item 
+                xs={10}>
+                <Card variant="outlined">
+                    <CardContent>
+                        <Typography  
+                            color="textSecondary" 
+                            gutterBottom>
+                            Send emails with the power of Emailjs and React
+                        </Typography>
+                        <form noValidate 
+                            autoComplete="off" 
+                            onSubmit={sendEmail}>
+                            <TextField 
+                                label="Name" 
+                                placeholder="Name"
+                                fullWidth
+                                margin="normal" 
+                                name="name"
+                            />
+                            <TextField 
+                                label="Email Address" 
+                                placeholder="Email Address" 
+                                fullWidth
+                                margin="normal" 
+                                name="email"
+                            />
+                            <TextField 
+                                label="Subject" 
+                                placeholder="Subject" 
+                                fullWidth
+                                margin="normal" 
+                                name="subject"
+                            />
+                            <TextField
+                                label="Message"
+                                placeholder="Message" 
+                                name="message"
+                                fullWidth
+                                margin="normal" 
+                                multiline
+                                rows={4}
+                            />
+                            <Button 
+                                variant="contained" color="primary" 
+                                type="submit"
+                                disableElevation>
+                                Send Message
+                            </Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            </Grid>
+        </Grid>
     )
 }
